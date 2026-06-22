@@ -10,18 +10,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-      - run: docker build -t ushukla/react-test -f ./client/Dockerfile.dev ./client
-      - run: docker run --rm -e CI=true ushukla/react-test npm test -- --watchAll=false
+      - run: docker build -t utkarshhitachi/react-test -f ./client/Dockerfile.dev ./client
+      - run: docker run --rm -e CI=true utkarshhitachi/react-test npm test -- --watchAll=false
  
-      - run: docker build -t ushukla/multi-client ./client
-      - run: docker build -t ushukla/multi-nginx ./nginx
-      - run: docker build -t ushukla/multi-server ./server
-      - run: docker build -t ushukla/multi-worker ./worker
+      - run: docker build -t utkarshhitachi/multi-client ./client
+      - run: docker build -t utkarshhitachi/multi-nginx ./nginx
+      - run: docker build -t utkarshhitachi/multi-server ./server
+      - run: docker build -t utkarshhitachi/multi-worker ./worker
  
-      - run: docker push ushukla/multi-client
-      - run: docker push ushukla/multi-nginx
-      - run: docker push ushukla/multi-server 
-      - run: docker push ushukla/multi-worker
+      - run: docker push utkarshhitachi/multi-client
+      - run: docker push utkarshhitachi/multi-nginx
+      - run: docker push utkarshhitachi/multi-server 
+      - run: docker push utkarshhitachi/multi-worker
  
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
